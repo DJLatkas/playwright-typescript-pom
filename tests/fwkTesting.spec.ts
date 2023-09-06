@@ -8,7 +8,7 @@ import { testData } from "./testData";
 
 test.describe('two tests', () => {
   console.log("in describe from spec file");
-  test("first playwright test12", async ({ page, context, browser, loginPage, dashboardPage, cartPage, ordersReviewPage, ordersHistoryPage }) => {
+  test("first playwright test12", async ({ page, context, browser, loginPage, dashboardPage, landingPage, ordersReviewPage, ordersHistoryPage }) => {
     console.log("test start")
     await loginPage.goTo();
     console.log("test ends")

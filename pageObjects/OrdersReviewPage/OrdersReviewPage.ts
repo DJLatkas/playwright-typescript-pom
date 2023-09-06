@@ -24,7 +24,7 @@ export class OrdersReviewPage extends CommonPage {
         }
     }
 
-    async VerifyEmailId(username) {
+    async VerifyEmailId(username: string | RegExp | (string | RegExp)[]) {
         await expect(this.page.locator(locators.emailId)).toHaveText(username);
     }
 

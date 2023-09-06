@@ -16,7 +16,7 @@ export class LoginPage extends CommonPage {
     await this.scenario.a11yAnalysis();
   }
 
-  async validLogin(username, password) {
+  async validLogin(username: string, password: string) {
     await this.page.locator(locators.userName).type(username);
     await this.page.locator(locators.password).type(password);
     await this.page.locator(locators.signInbutton).click();

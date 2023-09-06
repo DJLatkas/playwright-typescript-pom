@@ -2,7 +2,7 @@ import { LoginPage } from "../../pageObjects/LoginPage/LoginPage"
 import { DashboardPage } from '../../pageObjects/DashBoardPage/DashBoardPage';
 import { OrdersHistoryPage } from '../../pageObjects/OrdersHistoryPage/OrdersHistoryPage';
 import { OrdersReviewPage } from '../../pageObjects/OrdersReviewPage/OrdersReviewPage';
-import { CartPage } from '../../pageObjects/CartPage/CartPage';
+import { LandingPage } from '../../pageObjects/LandingPage/LandingPage';
 import { Page, test as baseTest } from "@playwright/test";
 import { CommonScenario } from "../common/CommonScenario";
 import { CommonPage } from "../common/CommonPage";
@@ -13,7 +13,7 @@ interface PageObjects {
     dashboardPage: DashboardPage;
     ordersHistoryPage: OrdersHistoryPage;
     ordersReviewPage: OrdersReviewPage;
-    cartPage: CartPage;
+    landingPage: LandingPage;
     commonScenarioPage: CommonScenario;
     commonPage: CommonPage,
 }
@@ -35,8 +35,8 @@ const test = baseTest.extend<PageObjects>({
     ordersReviewPage: async ({ page, commonScenarioPage }, use) => {
         await use(new OrdersReviewPage(page, commonScenarioPage));
     },
-    cartPage: async ({ page, commonScenarioPage }, use) => {
-        await use(new CartPage(page, commonScenarioPage));
+    landingPage: async ({ page, commonScenarioPage }, use) => {
+        await use(new LandingPage(page, commonScenarioPage));
     },
     // allPages: async ({ page, commonScenarioPage }, use) => {
     //     await use({
