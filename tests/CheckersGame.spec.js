@@ -29,7 +29,7 @@ test('Checkers', async ({ page }) => {
     let sourceMove = [];
     let sourcePiece;
     let destPiece;
-    //
+    //I think it's a loop
     for (let row = 0; row < 8; row++) {
       for (let col = 0; col < 8; col++) {
         sourceMove = [row, col];
@@ -78,6 +78,7 @@ test('Checkers', async ({ page }) => {
     function getRandomMove(moves) {
       return moves[Math.floor(Math.random() * moves.length)];
     }
+    //If you had to guess...
     function isCaptureMove(sourceCol, sourceRow, destCol, destRow) {
       const dx = Math.abs(destCol - sourceCol);
       const dy = destRow - sourceRow;
@@ -97,7 +98,7 @@ test('Checkers', async ({ page }) => {
     function getLegalMoves(row, col) {
       const piece = board[row][col];
       const legalMoves = [];
-    
+     
       if (piece === null) {
         return null;
       } else if (piece === 'W') {
