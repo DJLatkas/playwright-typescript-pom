@@ -1,6 +1,6 @@
 //@ts-check
 
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
    test('CheckersAgain', async ({ page }) => {
     class BoardImporter {
         async importTable() {
@@ -20,9 +20,13 @@ import { test } from "@playwright/test";
                   });
             console.log(board);
             return board;
-              
+        }
+        async verifyLocatorImage(locator: string) {
+            const boardImage = await page.locator(locator).screenshot();
+            expect(boardImage).toMatchSnapshot();
         }
     }
+
     class CheckersBoard {
         board: string[][];
         rows: number;
@@ -220,6 +224,7 @@ import { test } from "@playwright/test";
 
     await page.goto('https://www.gamesforthebrain.com/game/checkers/');
     const importer = new BoardImporter();
+    const boardImg = await importer.verifyLocatorImage('#board');
     //loop for 10 turns
     for (let i = 0; i < 10; i++) {
         const initialBoard = await importer.importTable();
@@ -237,8 +242,10 @@ import { test } from "@playwright/test";
         await page.waitForTimeout(500)
         }
     }
-    page.locator("a[href='./']").click
     
-    await page.waitForTimeout(500)
-
+    
+    await page.locator("a[href='./']").click()
+    //I could just re-run the importer and check the output, or I could show off image comparison for fun.
+    expect(await page.locator('#board').screenshot()).toMatchSnapshot()
+    //Image comparison is more interesting in concept, than in practice. Too easy.
 });
